@@ -1,6 +1,7 @@
 #⚙️Multi-user Authentication System SpringBoot API❤️‍🔥
 
-![Java_img1](https://user-images.githubusercontent.com/72025253/152047225-50cb20aa-6f5a-43dc-a7a4-fd61b2666111.png)
+
+![Java_img](https://user-images.githubusercontent.com/72025253/152047347-f105dfe0-edbc-4009-9ced-a81a9bc8dc54.png) ![spring 5 boot 2](https://user-images.githubusercontent.com/72025253/152047387-bdd7a428-cb9d-49c0-be69-3114898f1c99.png) ![postgresql (1)](https://user-images.githubusercontent.com/72025253/152048190-1674b446-c22f-4a56-bf11-318afb86796a.png)
 
 A multi-user authentication system  (user-type -> user, admin).
 
@@ -59,5 +60,3 @@ Admin User
 1. Create a user using the signup page and change the user type of a user to "admin" in the database.
 2. Now if a user is an admin he should redirect to Admin Dashboard after log in where he can see the list  of all registered users (List should show Email, Name, user-type, verified / Not Verified )
 Optional: You can also use any template or theme like AdminLTE ( Import Properly )
-
-Submission: You have to Push the code onto a GitHub Repository name it appropriately. Make a short video of < 10 mins to demonstrate the task. You have to show the functionality and show the database structure as well in the video.
