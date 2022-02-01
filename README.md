@@ -1,7 +1,6 @@
+#⚙️Multi-user Authentication System SpringBoot API❤️‍🔥
 
-# ⚙️![spring 5 boot 2](https://user-images.githubusercontent.com/72025253/152046062-4a988635-8cbd-4812-8d1f-f37d0d75964a.png)
-Multi-user Authentication System SpringBoot API❤️‍🔥
-
+![Springboot logo](https://user-images.githubusercontent.com/72025253/152046500-602f889a-d235-4792-8fa7-bda3e65e48ba.png)
 A multi-user authentication system (user-type -> user, admin).
 
 Note: An industry professional will check the systems. No pressure. Its to ensure maximum participation.
