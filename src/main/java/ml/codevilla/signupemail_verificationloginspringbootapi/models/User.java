@@ -37,6 +37,10 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
 
+  private Boolean locked = false;
+
+  private Boolean enabled = false;
+
   public User() {
   }
 
@@ -85,4 +89,5 @@ public class User {
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
+
 }

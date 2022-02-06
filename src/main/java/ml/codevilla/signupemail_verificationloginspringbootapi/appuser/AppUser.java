@@ -39,6 +39,7 @@ public class AppUser implements UserDetails {
     private AppUserRole appUserRole;
 
     private Boolean locked = false;
+
     private Boolean enabled = false;
 
     public AppUser(String firstName, String email, String lastName, String password, AppUserRole appUserRole) {
