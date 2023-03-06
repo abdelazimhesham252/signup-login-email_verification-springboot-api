@@ -8,6 +8,9 @@ import ml.codevilla.signupemail_verificationloginspringbootapi.payload.response.
 import ml.codevilla.signupemail_verificationloginspringbootapi.registration.token.ConfirmationToken;
 import ml.codevilla.signupemail_verificationloginspringbootapi.registration.token.ConfirmationTokenService;
 import ml.codevilla.signupemail_verificationloginspringbootapi.repository.UserRepository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,25 +20,33 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-  @Autowired
-  private UserRepository userRepository;
 
-  @Autowired
-  private ConfirmationTokenService confirmationTokenService;
+	@Autowired
+   private UserRepository userRepository;
+	@Autowired
+   private ConfirmationTokenService confirmationTokenService;
+  
+   private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-  BCryptPasswordEncoder bCryptPasswordEncoder;
+   @Autowired
+   private EmailSender emailSender;
 
-  @Autowired
-  private EmailSender emailSender;
+   @Autowired
+   private UserService userService;
+   
+   
+   Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
-  @Autowired
-  private UserService userService;
 
   @Override
   @Transactional
@@ -61,7 +72,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     // Create new user's account
     User user = new User(signUpRequest.getUsername(),
             signUpRequest.getEmail(),
-            bCryptPasswordEncoder.encode(signUpRequest.getPassword()));
+//            bCryptPasswordEncoder.encode(
+            		signUpRequest.getPassword()
+            		);
 
 //    Set<String> strRoles = signUpRequest.getRole();
 //    Set<Role> roles = new HashSet<>();
@@ -105,8 +118,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             user
     );
 
-    String link = "http://localhost:8080/api/auth/confirm?token="+token;
-    emailSender.send(signUpRequest.getEmail(), buildEmail(signUpRequest.getUsername(),link));
+    String link = "http://localhost:1025/api/auth/confirm?token="+token;
+    
+   
+    logger.info("An INFO Message"+ link);
+
+    
+  emailSender.send(signUpRequest.getEmail(), buildEmail(signUpRequest.getUsername(),link));
     confirmationTokenService.saveConfirmationToken(confirmationToken);
     //TODO: Send Email
     return ResponseEntity.ok(new MessageResponse("Your account has been registered.!Please confirm your email address."));
